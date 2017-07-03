@@ -3,10 +3,10 @@
         "type": "node",
         "resources": 
 		{"storage": 1024,
-         "memory": 1512},
+         "memory": 1024},
 	"latencies":
-		{"n12":3,
-		 "n13":4}
+		{"n12":1,
+		 "n13":1}
 	},
 
 
@@ -16,8 +16,8 @@
 		{"memory": 256,
 		 "storage": 512},
 	"latencies":
-		{"n12":3,
-		 "n23":5}
+		{"n12":1,
+		 "n23":1}
 	},
 
     "FSSN3": {
@@ -26,15 +26,15 @@
 		{"memory": 512,
 		 "storage": 1024},
 	"latencies":
-		{"n13":5,
-		 "n23":4}
+		{"n13":1,
+		 "n23":1}
 	},
 
     "VG1": {
         "type": "app",
         "resources": 
-		{"memory": 256,
-		 "storage": 512},
+		{"memory": 128,
+		 "storage": 256},
 	"dependencies":
 		{"local":"java",
 		 "nonlocal":["APP2","APP3"]}
@@ -43,11 +43,21 @@
     "APP2": {
         "type": "app",
         "resources": 
-		{"memory": 256,
-		 "storage": 512},
+		{"memory": 128,
+		 "storage": 256},
 	"dependencies":
 		{"local":"java",
-		 "nonlocal": {}}
+		 "nonlocal": []}
+	},
+    
+    "APP3": {
+        "type": "app",
+        "resources": 
+		{"memory": 128,
+		 "storage": 256},
+	"dependencies":
+		{"local":"java",
+		 "nonlocal": []}
 	}
 
 }
