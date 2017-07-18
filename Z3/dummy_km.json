@@ -1,33 +1,39 @@
 {
     "FSSN1": {
+        "id": 1,
         "type": "node",
         "resources": 
 		{"storage": 1024,
          "memory": 1024},
 	"latencies":
-		{"n12":1,
+		{"n11":0,
+         "n12":1,
 		 "n13":1}
 	},
 
 
     "FSSN2": {
+        "id" : 2,
         "type": "node",
         "resources": 
 		{"memory": 256,
 		 "storage": 512},
 	"latencies":
-		{"n12":1,
+		{"n21":1,
+         "n22":0,
 		 "n23":1}
 	},
 
     "FSSN3": {
+        "id" : 3,
         "type": "node",
         "resources": 
 		{"memory": 512,
 		 "storage": 1024},
 	"latencies":
-		{"n13":1,
-		 "n23":1}
+		{"n31":1,
+		 "n32":1,
+         "n33":0}
 	},
 
     "VG1": {
