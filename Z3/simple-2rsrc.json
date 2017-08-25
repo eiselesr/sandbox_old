@@ -3,7 +3,8 @@
         "id": 1,
         "type": "node",
         "resources": 
-		{"memory": 1024},
+		{"ram": 4096,
+         "storage" : 8192},
 	"latencies":
 		{"n11":0,
          "n12":3,
@@ -17,7 +18,8 @@
         "id" : 2,
         "type": "node",
         "resources": 
-		{"memory": 512},
+		{"ram": 4096,
+         "storage" : 8192},
 	"latencies":
 		{"n21":3,
          "n22":0,
@@ -30,7 +32,8 @@
         "id" : 3,
         "type": "node",
         "resources": 
-		{"memory": 512},
+		{"ram": 4096,
+         "storage" : 16384},
 	"latencies":
 		{"n31":4,
 		 "n32":5,
@@ -43,7 +46,8 @@
         "id" : 4,
         "type": "node",
         "resources": 
-		{"memory": 512},
+		{"ram": 4096,
+         "storage" : 8192},
 	"latencies":
 		{"n41":5,
 		 "n42":6,
@@ -56,7 +60,8 @@
         "id" : 5,
         "type": "node",
         "resources": 
-		{"memory": 512},
+		{"ram": 4096,
+         "storage" : 8192},
 	"latencies":
 		{"n51":6,
 		 "n52":7,
@@ -68,7 +73,8 @@
     "APP1": {
         "type": "app",
         "resources": 
-		{"memory": 256},
+		{"ram":0,
+         "storage" : 0},
 	"dependencies":
 		{"local":"java",
 		 "nonlocal":["APP2", "APP3"]}
@@ -77,7 +83,8 @@
     "APP2": {
         "type": "app",
         "resources": 
-		{"memory": 128},
+		{"ram": 1024,
+         "storage" : 1024},
 	"dependencies":
 		{"local":"java",
 		 "nonlocal": []}
@@ -86,7 +93,8 @@
     "APP3": {
         "type": "app",
         "resources": 
-		{"memory": 128},
+		{"ram": 1024,
+         "storage" : 1024},
 	"dependencies":
 		{"local":"java",
 		 "nonlocal": []}
