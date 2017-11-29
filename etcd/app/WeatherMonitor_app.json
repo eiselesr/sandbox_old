@@ -1,0 +1,126 @@
+{
+  "name": "WeatherMonitor",
+  "devices": {},
+  "components": {
+    "TempMonitor": {
+      "name": "TempMonitor",
+      "formals": [],
+      "libraries": [],
+      "files": [],
+      "devices": [],
+      "exceptHandler": "",
+      "ports": {
+        "reqs": {},
+        "pubs": {},
+        "reps": {},
+        "inss": {},
+        "subs": {
+          "tempupdate": {
+            "type": "TempData",
+            "upperlimit": 0,
+            "lowerlimit": 0
+          }
+        },
+        "clts": {},
+        "srvs": {},
+        "tims": {}
+      }
+    },
+    "TempSensor": {
+      "name": "TempSensor",
+      "formals": [],
+      "libraries": [
+        "libmath.so",
+        "libam.so"
+      ],
+      "files": [
+        "config.ini",
+        "second.txt"
+      ],
+      "devices": [
+        "Thermostat"
+      ],
+      "cpu": {
+        "quota": 100000,
+        "period": 1000000
+      },
+      "net": {
+        "quota": 25,
+        "period": 10
+      },
+      "exceptHandler": "",
+      "ports": {
+        "reqs": {},
+        "pubs": {
+          "ready": {
+            "type": "TempData",
+            "upperlimit": 10,
+            "lowerlimit": 0
+          }
+        },
+        "reps": {},
+        "inss": {},
+        "subs": {
+          "rawtemp": {
+            "type": "TempInternal",
+            "upperlimit": 0,
+            "lowerlimit": 0
+          }
+        },
+        "clts": {},
+        "srvs": {},
+        "tims": {
+          "clock": {
+            "period": 5000
+          }
+        }
+      }
+    }
+  },
+  "actors": {
+    "WeatherReceiver": {
+      "internals": [],
+      "locals": [],
+      "criticals": [],
+      "formals": [],
+      "wires": [],
+      "instances": {
+        "monitor": {
+          "type": "TempMonitor",
+          "actuals": []
+        }
+      },
+      "devices": [],
+      "memory": -1,
+      "space": -1,
+      "exceptHandler": ""
+    },
+    "WeatherIndicator": {
+      "internals": [],
+      "locals": [],
+      "criticals": [],
+      "formals": [],
+      "wires": [],
+      "instances": {
+        "sensor": {
+          "type": "TempSensor",
+          "actuals": []
+        }
+      },
+      "devices": [
+        "Thermostat"
+      ],
+      "memory": 512,
+      "space": 1024,
+      "exceptHandler": ""
+    }
+  },
+  "messages": [
+    {
+      "name": "TempInternal"
+    },
+    {
+      "name": "TempData"
+    }
+  ]
+}
