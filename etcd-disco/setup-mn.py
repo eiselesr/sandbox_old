@@ -15,6 +15,9 @@ def setup():
     #net.addNAT().configDefault()
     net.start() #neccessary for nat to work.
 
+    #------------------------------------------------------
+    #  START LOCAL DISCOVERY
+    #------------------------------------------------------
     controller = net.get('c0')
     #DISCO = controller.cmd('${ETCD_DISCOVERY:-$(curl https://discovery.etcd.io/new?size=3)}')
     UUID = ((controller.cmd('uuidgen')).strip('\n')).strip('\r')
@@ -27,7 +30,9 @@ def setup():
     setup_res = h1.cmd('./setupDisco.sh')
     print("setup_res %s" %setup_res)
     time.sleep(1) # need to give etcd cluster time to start.
-
+    #------------------------------------------------------
+    #  DEFINE SIZE OF INITIAL CLUSTER
+    #------------------------------------------------------
     cmd = "curl -X PUT "+DISCO+"/_config/size -d value=2"
     print("cmd %s" %cmd)
     put_res = h1.cmd(cmd)
