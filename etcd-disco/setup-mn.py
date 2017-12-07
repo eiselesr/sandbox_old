@@ -10,7 +10,7 @@ import time
 
 def setup():
 
-    topo = SingleSwitchTopo( k=3 )
+    topo = SingleSwitchTopo( k=4 )
     net = Mininet( topo=topo, xterms=True)
     #net.addNAT().configDefault()
     net.start() #neccessary for nat to work.
@@ -33,19 +33,23 @@ def setup():
     #------------------------------------------------------
     #  DEFINE SIZE OF INITIAL CLUSTER
     #------------------------------------------------------
-    cmd = "curl -X PUT "+DISCO+"/_config/size -d value=2"
-    print("cmd %s" %cmd)
-    put_res = h1.cmd(cmd)
-    print("put res %s" %put_res)
-    result = h1.cmd("curl -X GET "+DISCO+"/_config/size")
-    print("disco result: %s" %result)
-    nodes = net.keys()
-    print("nodes are %s" %nodes)
+    if True:
+        size = 2
+        cmd = "curl -X PUT "+DISCO+"/_config/size -d value=%s" %size
+        print("cmd %s" %cmd)
+        put_res = h1.cmd(cmd)
+        print("put res %s" %put_res)
+        result = h1.cmd("curl -X GET "+DISCO+"/_config/size")
+        print("disco result: %s" %result)
+        nodes = net.keys()
+        print("nodes are %s" %nodes)
 
-    for key in net.__iter__():
-        if 'h' in key and key!='h1':
-            node = net.get(key)
-            print(node.cmd("./etcd-setup.sh "))
+        i = 0
+        for key in net.__iter__():
+            if 'h' in key and key!='h1' and i<size:
+                node = net.get(key)
+                print(node.cmd("./etcd-setup.sh "))
+                i=i+1
 #
 #
 #     # h1 = net.get('h1')
