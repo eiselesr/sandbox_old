@@ -17,19 +17,11 @@ echo "IP: $ip:2380"
 id="$(ifconfig | awk '/eth0/ {id=$NF; print id;}')"
 echo "ID: $id"
 
-if false; then
+if true; then
 	./etcd-download-test/etcd --name ${id} \
 		--initial-advertise-peer-urls http://${ip}:2380 \
 	  --listen-peer-urls http://${ip}:2380 \
 		--advertise-client-urls http://${ip}:2379 \
 	  --listen-client-urls http://${ip}:2379 \
 		--discovery $DISCO &
-fi
-
-if true; then
-	./etcd-download-test/etcd \
-		--listen-client-urls http://${ip}:2379 \
-		--advertise-client-urls http://${ip}:2379 \
-		--listen-peer-urls http://${ip}:2380 \
-		--initial-advertise-peer-urls http://${ip}:2380 &
 fi
